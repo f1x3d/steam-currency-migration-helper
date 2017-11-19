@@ -1,0 +1,12 @@
+{
+    "manifest_version": 2,
+    "name": "Steam Currency Migration Helper",
+    "version": "1.0",
+    "description": "Helps to get used to USD to UAH currency migration on Steam.",
+    "content_scripts": [
+        {
+            "matches": ["*://store.steampowered.com/*", "*://steamcommunity.com/*"],
+            "js": ["currencyMigrationHelper.js"]
+        }
+    ]
+}
