@@ -25,15 +25,19 @@ function appendUsdPrice(regexp, inputString)
 	return inputString;
 }
 
-// TODO: use XPath instead of for loop & if clause
 // TODO: try to record all possible tags with prices?
-var allTags = document.body.getElementsByTagName("*");
-for (var i = 0, len = allTags.length; i < len; i++)
+var tagsWithPrice = document.evaluate("//*[not(descendant::*)][contains(.,'₴')]", document, null, XPathResult.ANY_TYPE, null);
+var arrayOfTags = [];
+var tag;
+
+while(tag = tagsWithPrice.iterateNext())
 {
-	var tag = allTags[i];
+	arrayOfTags.push(tag);
+}
+
+for(var i = 0; i < arrayOfTags.length; i++)
+{
+	var tag = arrayOfTags[i];
 	var tagContent = tag.innerHTML;
-	
-	if (tag.children.length > 0 || !tagContent.includes("₴")) continue;
-	
 	tag.innerHTML = appendUsdPrice(priceRegexp, tagContent);
 }
