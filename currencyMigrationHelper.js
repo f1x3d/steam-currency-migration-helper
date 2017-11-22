@@ -26,7 +26,7 @@ function appendUsdPrice(regexp, inputString)
 }
 
 // TODO: try to record all possible tags with prices?
-var tagsWithPrice = document.evaluate("//*[contains(.,'₴') and not(descendant::*)]", document, null, XPathResult.ANY_TYPE, null);
+var tagsWithPrice = document.evaluate("//*[not(descendant::*)][contains(.,'₴')]", document, null, XPathResult.ANY_TYPE, null);
 var arrayOfTags = [];
 var tag;
 
