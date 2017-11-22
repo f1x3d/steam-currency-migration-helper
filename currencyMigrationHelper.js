@@ -35,8 +35,9 @@ while(tag = tagsWithPrice.iterateNext())
 	arrayOfTags.push(tag);
 }
 
-arrayOfTags.forEach(function(tag) 
+for(var i = 0; i < arrayOfTags.length; i++)
 {
+	var tag = arrayOfTags[i];
 	var tagContent = tag.innerHTML;
 	tag.innerHTML = appendUsdPrice(priceRegexp, tagContent);
-});
+}
